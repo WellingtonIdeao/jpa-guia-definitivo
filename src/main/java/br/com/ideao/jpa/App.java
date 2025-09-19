@@ -1,13 +1,23 @@
 package br.com.ideao.jpa;
 
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import br.com.ideao.jpa.dao.VeiculoDAO;
+import br.com.ideao.jpa.dominio.Veiculo;
+import br.com.ideao.jpa.util.JpaUtil;
+
+import java.math.BigDecimal;
 
 public class App {
 	public static void main(String[] args) {
-        System.out.println("Hello World, Jakarta Persistence API - JPA");
-        EntityManagerFactory entityManagerFactory =
-                Persistence.createEntityManagerFactory("br.com.ideao.jpa-pu");
-                entityManagerFactory.close();
+        VeiculoDAO veiculoDAO = new VeiculoDAO();
+
+        Veiculo veiculo = new Veiculo();
+        veiculo.setFabricante("Honda");
+        veiculo.setModelo("Civic");
+        veiculo.setAnoFabricacao(2020);
+        veiculo.setAnoModelo(2020);
+        veiculo.setValor(new BigDecimal(90500));
+
+        veiculoDAO.persist(veiculo);
+        JpaUtil.close();
     }
 }
