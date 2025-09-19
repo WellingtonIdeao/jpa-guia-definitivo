@@ -88,4 +88,9 @@ public class Veiculo {
     public int hashCode() {
         return Objects.hashCode(codigo);
     }
+
+    @Override
+    public String toString() {
+        return "código: " + this.codigo + " modelo: " + this.modelo;
+    }
 }

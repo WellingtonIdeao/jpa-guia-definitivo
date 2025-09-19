@@ -18,6 +18,10 @@ public class App {
         veiculo.setValor(new BigDecimal(90500));
 
         veiculoDAO.persist(veiculo);
+        System.out.println(veiculoDAO.find(3L));
+        System.out.println(veiculoDAO.findByReference(3L));
+
+        veiculoDAO.close();
         JpaUtil.close();
     }
 }

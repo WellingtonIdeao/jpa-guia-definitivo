@@ -18,7 +18,17 @@ public class VeiculoDAO {
         transaction.begin();
         manager.persist(veiculo);
         transaction.commit();
+    }
 
+    public Veiculo find(Long id) {
+        return manager.find(Veiculo.class, id);
+    }
+
+    public Veiculo findByReference(Long id) {
+        return manager.getReference(Veiculo.class, id);
+    }
+
+    public void close() {
         manager.close();
     }
 }
