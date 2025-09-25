@@ -91,6 +91,11 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return "código: " + this.codigo + " modelo: " + this.modelo;
+        return  this.codigo + " - " +
+                this.fabricante + " " +
+                this.modelo + ", ano " +
+                this.anoFabricacao + "/" +
+                this.anoModelo + " por R$" +
+                this.valor;
     }
 }

@@ -4,6 +4,9 @@ import br.com.ideao.jpa.dominio.Veiculo;
 import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
+
+import java.util.List;
 
 public class VeiculoDAO {
     private EntityManager manager;
@@ -30,5 +33,11 @@ public class VeiculoDAO {
 
     public void close() {
         manager.close();
+    }
+
+    public List<Veiculo> list() {
+        Query query = manager.createQuery("SELECT v FROM Veiculo v");
+        List<Veiculo> veiculos =  query.getResultList();
+        return veiculos;
     }
 }
