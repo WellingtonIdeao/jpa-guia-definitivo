@@ -23,7 +23,9 @@ public class App {
 //        System.out.println(veiculoDAO.findByReference(3L));
 
         List<Veiculo> veiculos = veiculoDAO.list();
+        veiculoDAO.update(4L, 102000.0);
         show(veiculos);
+
         veiculoDAO.close();
         JpaUtil.close();
     }

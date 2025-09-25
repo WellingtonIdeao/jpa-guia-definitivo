@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class VeiculoDAO {
@@ -39,5 +40,15 @@ public class VeiculoDAO {
         Query query = manager.createQuery("SELECT v FROM Veiculo v");
         List<Veiculo> veiculos =  query.getResultList();
         return veiculos;
+    }
+
+    public void update(Long id, Double newValue) {
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+
+        Veiculo veiculo = manager.find(Veiculo.class, id);
+        veiculo.setValor(new BigDecimal(newValue));
+
+        transaction.commit();
     }
 }
