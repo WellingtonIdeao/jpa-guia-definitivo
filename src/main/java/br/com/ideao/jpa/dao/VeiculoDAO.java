@@ -61,4 +61,20 @@ public class VeiculoDAO {
 
         transaction.commit();
     }
+
+    public void persistenceContext() {
+
+        Veiculo v1 = manager.find(Veiculo.class, 1L);
+        System.out.println("Buscou o veículo pela primeira vez...");
+
+        System.out.println("Gerenciado? " + manager.contains(v1));
+        manager.detach(v1);
+        System.out.println("E agora? " + manager.contains(v1));
+
+        Veiculo v2 = manager.find(Veiculo.class, 1L);
+        System.out.println("Buscou o veículo pela segunda vez...");
+
+        System.out.println("Mesmo veículo? " + (v1 == v2));
+    }
+
 }

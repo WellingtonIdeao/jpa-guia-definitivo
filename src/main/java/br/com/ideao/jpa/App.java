@@ -27,6 +27,7 @@ public class App {
         List<Veiculo> veiculos = veiculoDAO.list();
         show(veiculos);
 
+        veiculoDAO.persistenceContext();
         veiculoDAO.close();
         JpaUtil.close();
     }
