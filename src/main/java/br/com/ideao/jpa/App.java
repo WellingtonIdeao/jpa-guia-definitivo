@@ -22,8 +22,9 @@ public class App {
 //        System.out.println(veiculoDAO.find(3L));
 //        System.out.println(veiculoDAO.findByReference(3L));
 
-        List<Veiculo> veiculos = veiculoDAO.list();
         veiculoDAO.update(4L, 102000.0);
+        veiculoDAO.remove(4L);
+        List<Veiculo> veiculos = veiculoDAO.list();
         show(veiculos);
 
         veiculoDAO.close();

@@ -51,4 +51,14 @@ public class VeiculoDAO {
 
         transaction.commit();
     }
+
+    public void remove(Long id) {
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+
+        Veiculo veiculo = manager.find(Veiculo.class, id);
+        manager.remove(veiculo);
+
+        transaction.commit();
+    }
 }
