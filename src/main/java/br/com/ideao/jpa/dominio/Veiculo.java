@@ -35,6 +35,9 @@ public class Veiculo {
     @Column(name = "data_cadastro", nullable = false)
     private LocalDate dataCadastro;
 
+    @Lob
+    private String especificacoes;
+
     public VeiculoId getCodigo() {
         return codigo;
     }
@@ -97,6 +100,14 @@ public class Veiculo {
 
     public void setDataCadastro(LocalDate dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+
+    public String getEspecificacoes() {
+        return especificacoes;
+    }
+
+    public void setEspecificacoes(String especificacoes) {
+        this.especificacoes = especificacoes;
     }
 
     @Override

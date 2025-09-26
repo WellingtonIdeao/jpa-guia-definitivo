@@ -17,6 +17,13 @@ public class App {
         Veiculo veiculo = new Veiculo();
         VeiculoId id = new VeiculoId("ABC-1234", "João Pessoa");
 
+        StringBuilder especificacoes = new StringBuilder();
+        especificacoes.append("Carro em excelente estado.\n");
+        especificacoes.append("Completo, menos ar.\n");
+        especificacoes.append("Primeiro dono, com manual de instrução ");
+        especificacoes.append("e todas as revisões feitas.\n");
+        especificacoes.append("IPVA pago, aceita financiamento.");
+
         veiculo.setCodigo(id);
         veiculo.setFabricante("Honda");
         veiculo.setModelo("Civic");
@@ -25,6 +32,7 @@ public class App {
         veiculo.setValor(new BigDecimal(90500));
         veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
         veiculo.setDataCadastro(LocalDate.now());
+        veiculo.setEspecificacoes(especificacoes.toString());
 
         veiculoDAO.persist(veiculo);
         System.out.println(veiculoDAO.find(id));
