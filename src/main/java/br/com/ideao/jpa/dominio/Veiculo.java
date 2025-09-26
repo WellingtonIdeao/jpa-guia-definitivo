@@ -38,6 +38,9 @@ public class Veiculo {
     @Lob
     private String especificacoes;
 
+    @Lob
+    private Byte[] foto;
+
     public VeiculoId getCodigo() {
         return codigo;
     }
@@ -108,6 +111,14 @@ public class Veiculo {
 
     public void setEspecificacoes(String especificacoes) {
         this.especificacoes = especificacoes;
+    }
+
+    public Byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Byte[] foto) {
+        this.foto = foto;
     }
 
     @Override
