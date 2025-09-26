@@ -8,10 +8,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "tab_veiculo")
 public class Veiculo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_veiculo")
-    private Long codigo;
+
+    @EmbeddedId
+    private VeiculoId codigo;
 
     @Column(length = 60, nullable = false)
     private String fabricante;
@@ -28,11 +27,11 @@ public class Veiculo {
     @Column(precision = 10, scale = 2, nullable = true)
     private BigDecimal valor;
 
-    public Long getCodigo() {
+    public VeiculoId getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Long codigo) {
+    public void setCodigo(VeiculoId codigo) {
         this.codigo = codigo;
     }
 

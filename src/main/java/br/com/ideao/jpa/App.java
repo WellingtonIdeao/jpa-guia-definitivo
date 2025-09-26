@@ -2,6 +2,7 @@ package br.com.ideao.jpa;
 
 import br.com.ideao.jpa.dao.VeiculoDAO;
 import br.com.ideao.jpa.dominio.Veiculo;
+import br.com.ideao.jpa.dominio.VeiculoId;
 import br.com.ideao.jpa.util.JpaUtil;
 
 import java.math.BigDecimal;
@@ -12,6 +13,9 @@ public class App {
         VeiculoDAO veiculoDAO = new VeiculoDAO();
 
         Veiculo veiculo = new Veiculo();
+        VeiculoId id = new VeiculoId("ABC-1234", "João Pessoa");
+
+        veiculo.setCodigo(id);
         veiculo.setFabricante("Honda");
         veiculo.setModelo("Civic");
         veiculo.setAnoFabricacao(2020);
@@ -19,15 +23,13 @@ public class App {
         veiculo.setValor(new BigDecimal(90500));
 
         veiculoDAO.persist(veiculo);
-//        System.out.println(veiculoDAO.find(3L));
-//        System.out.println(veiculoDAO.findByReference(3L));
+        System.out.println(veiculoDAO.find(id));
+        System.out.println(veiculoDAO.findByReference(id));
 
-        veiculoDAO.update(4L, 102000.0);
-        veiculoDAO.remove(4L);
-        List<Veiculo> veiculos = veiculoDAO.list();
-        show(veiculos);
+        veiculoDAO.update(id, 102000.0);
+//        veiculoDAO.remove(id);
 
-//        veiculoDAO.persistenceContext();
+        veiculoDAO.persistenceContext();
         veiculoDAO.persistDetached();
         show(veiculoDAO.list());
         veiculoDAO.close();
