@@ -77,4 +77,24 @@ public class VeiculoDAO {
         System.out.println("Mesmo veículo? " + (v1 == v2));
     }
 
+    public void persistDetached() {
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+
+        Veiculo veiculo = manager.find(Veiculo.class, 1L);
+
+        transaction.commit();
+
+        manager.close();
+        veiculo.setValor(new BigDecimal(120_000));
+
+        manager = JpaUtil.getEntityManager();
+        transaction = manager.getTransaction();
+        transaction.begin();
+
+        veiculo = manager.merge(veiculo);
+
+        transaction.commit();
+    }
+
 }
