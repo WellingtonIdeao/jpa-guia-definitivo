@@ -1,6 +1,7 @@
 package br.com.ideao.jpa;
 
 import br.com.ideao.jpa.dao.VeiculoDAO;
+import br.com.ideao.jpa.dominio.TipoCombustivel;
 import br.com.ideao.jpa.dominio.Veiculo;
 import br.com.ideao.jpa.dominio.VeiculoId;
 import br.com.ideao.jpa.util.JpaUtil;
@@ -21,6 +22,7 @@ public class App {
         veiculo.setAnoFabricacao(2020);
         veiculo.setAnoModelo(2020);
         veiculo.setValor(new BigDecimal(90500));
+        veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
 
         veiculoDAO.persist(veiculo);
         System.out.println(veiculoDAO.find(id));

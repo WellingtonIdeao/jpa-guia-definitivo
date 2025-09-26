@@ -27,6 +27,10 @@ public class Veiculo {
     @Column(precision = 10, scale = 2, nullable = true)
     private BigDecimal valor;
 
+    @Column(name = "tipo_combustivel", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TipoCombustivel tipoCombustivel;
+
     public VeiculoId getCodigo() {
         return codigo;
     }
@@ -75,6 +79,14 @@ public class Veiculo {
         this.valor = valor;
     }
 
+    public TipoCombustivel getTipoCombustivel() {
+        return tipoCombustivel;
+    }
+
+    public void setTipoCombustivel(TipoCombustivel tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) {
@@ -95,7 +107,8 @@ public class Veiculo {
                 this.fabricante + " " +
                 this.modelo + ", ano " +
                 this.anoFabricacao + "/" +
-                this.anoModelo + " por R$" +
+                this.anoModelo +"/" +
+                this.tipoCombustivel + " por R$" +
                 this.valor;
     }
 }
