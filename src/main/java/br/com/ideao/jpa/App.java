@@ -1,6 +1,7 @@
 package br.com.ideao.jpa;
 
 import br.com.ideao.jpa.dao.VeiculoDAO;
+import br.com.ideao.jpa.dominio.Proprietario;
 import br.com.ideao.jpa.dominio.TipoCombustivel;
 import br.com.ideao.jpa.dominio.Veiculo;
 import br.com.ideao.jpa.dominio.VeiculoId;
@@ -24,6 +25,10 @@ public class App {
         especificacoes.append("e todas as revisões feitas.\n");
         especificacoes.append("IPVA pago, aceita financiamento.");
 
+        Proprietario proprietario = new Proprietario();
+        proprietario.setNome("João das Couves");
+        proprietario.setTelefone("(99) 1234-5678");
+
         veiculo.setCodigo(id);
         veiculo.setFabricante("Honda");
         veiculo.setModelo("Civic");
@@ -33,6 +38,7 @@ public class App {
         veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
         veiculo.setDataCadastro(LocalDate.now());
         veiculo.setEspecificacoes(especificacoes.toString());
+        veiculo.setProprietario(proprietario);
 
         veiculoDAO.persist(veiculo);
         System.out.println(veiculoDAO.find(id));

@@ -41,6 +41,9 @@ public class Veiculo {
     @Lob
     private Byte[] foto;
 
+    @Embedded
+    private Proprietario proprietario;
+
     public VeiculoId getCodigo() {
         return codigo;
     }
@@ -119,6 +122,14 @@ public class Veiculo {
 
     public void setFoto(Byte[] foto) {
         this.foto = foto;
+    }
+
+    public Proprietario getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(Proprietario proprietario) {
+        this.proprietario = proprietario;
     }
 
     @Override
