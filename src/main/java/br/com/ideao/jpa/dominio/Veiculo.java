@@ -3,6 +3,7 @@ package br.com.ideao.jpa.dominio;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -30,6 +31,9 @@ public class Veiculo {
     @Column(name = "tipo_combustivel", nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoCombustivel tipoCombustivel;
+
+    @Column(name = "data_cadastro", nullable = false)
+    private LocalDate dataCadastro;
 
     public VeiculoId getCodigo() {
         return codigo;
@@ -85,6 +89,14 @@ public class Veiculo {
 
     public void setTipoCombustivel(TipoCombustivel tipoCombustivel) {
         this.tipoCombustivel = tipoCombustivel;
+    }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     @Override

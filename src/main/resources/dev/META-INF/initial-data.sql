@@ -1,3 +1,3 @@
-insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel) values ('AAA','1111', 'Fiat', 'Toro', 2020, 2020, 107000, 'DIESEL');
-insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel) values ('BBB','2222', 'Ford', 'Fiesta', 2019, 2019, 42000, 'GASOLINA');
-insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel) values ('CCC', '3333', 'VW', 'Gol', 2019, 2020, 35000, 'BICOMBUSTIVEL');
+insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel, data_cadastro) values ('AAA','1111', 'Fiat', 'Toro', 2020, 2020, 107000, 'DIESEL', sysdate());
+insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel, data_cadastro) values ('BBB','2222', 'Ford', 'Fiesta', 2019, 2019, 42000, 'GASOLINA', sysdate());
+insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel, data_cadastro) values ('CCC', '3333', 'VW', 'Gol', 2019, 2020, 35000, 'BICOMBUSTIVEL', sysdate());

@@ -7,6 +7,7 @@ import br.com.ideao.jpa.dominio.VeiculoId;
 import br.com.ideao.jpa.util.JpaUtil;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public class App {
@@ -23,6 +24,7 @@ public class App {
         veiculo.setAnoModelo(2020);
         veiculo.setValor(new BigDecimal(90500));
         veiculo.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+        veiculo.setDataCadastro(LocalDate.now());
 
         veiculoDAO.persist(veiculo);
         System.out.println(veiculoDAO.find(id));
