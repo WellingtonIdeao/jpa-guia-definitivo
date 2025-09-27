@@ -6,6 +6,7 @@ import br.com.ideao.jpa.dominio.TipoCombustivel;
 import br.com.ideao.jpa.dominio.Veiculo;
 import br.com.ideao.jpa.dominio.VeiculoId;
 import br.com.ideao.jpa.util.JpaUtil;
+import jakarta.persistence.EntityNotFoundException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -42,7 +43,11 @@ public class App {
 
         veiculoDAO.persist(veiculo);
         System.out.println(veiculoDAO.find(id));
-        System.out.println(veiculoDAO.findByReference(id));
+        try {
+            System.out.println(veiculoDAO.findByReference(id));
+        } catch (EntityNotFoundException ex) {
+            System.out.println("Veiculo não encontrado!");
+        }
 
         veiculoDAO.update(id, 102000.0);
 //        veiculoDAO.remove(id);

@@ -21,6 +21,7 @@ public class VeiculoDAO {
         EntityTransaction transaction = manager.getTransaction();
         transaction.begin();
 
+        manager.persist(veiculo.getProprietario());
         manager.persist(veiculo);
 
         transaction.commit();
@@ -102,6 +103,4 @@ public class VeiculoDAO {
 
         transaction.commit();
     }
-
-
 }
