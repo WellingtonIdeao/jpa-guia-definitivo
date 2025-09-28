@@ -6,6 +6,8 @@ import br.com.ideao.jpa.dominio.VeiculoId;
 import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 
+import java.util.List;
+
 public class ProprietarioDAO {
     private EntityManager manager;
 
@@ -17,8 +19,8 @@ public class ProprietarioDAO {
         this.manager.close();
     }
 
-    public Veiculo getVeiculo(Long id) {
+    public List<Veiculo> getVeiculos(Long id) {
         Proprietario proprietario = this.manager.find(Proprietario.class, id);
-        return proprietario.getVeiculo();
+        return proprietario.getVeiculos();
     }
 }

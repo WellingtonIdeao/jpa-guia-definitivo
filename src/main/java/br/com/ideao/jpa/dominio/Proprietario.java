@@ -2,6 +2,7 @@ package br.com.ideao.jpa.dominio;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,8 +21,8 @@ public class Proprietario {
     @Column(length = 255)
     private String email;
 
-    @OneToOne(mappedBy = "proprietario")
-    private Veiculo veiculo;
+    @OneToMany(mappedBy = "proprietario")
+    private List<Veiculo> veiculos;
 
     public Long getCodigo() {
         return codigo;
@@ -55,12 +56,12 @@ public class Proprietario {
         this.email = email;
     }
 
-    public Veiculo getVeiculo() {
-        return veiculo;
+    public List<Veiculo> getVeiculos() {
+        return veiculos;
     }
 
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
+    public void setVeiculos(List<Veiculo> veiculos) {
+        this.veiculos = veiculos;
     }
 
     @Override

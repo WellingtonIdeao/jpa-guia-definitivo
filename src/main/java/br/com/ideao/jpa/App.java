@@ -57,7 +57,8 @@ public class App {
         veiculoDAO.persistenceContext();
         veiculoDAO.persistDetached();
         show(veiculoDAO.list());
-        System.out.println(proprietarioDAO.getVeiculo(1L));
+
+        show(proprietarioDAO.getVeiculos(1L));
 
         veiculoDAO.close();
         proprietarioDAO.close();
