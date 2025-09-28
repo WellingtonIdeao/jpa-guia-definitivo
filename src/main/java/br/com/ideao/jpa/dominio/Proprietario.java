@@ -20,6 +20,9 @@ public class Proprietario {
     @Column(length = 255)
     private String email;
 
+    @OneToOne(mappedBy = "proprietario")
+    private Veiculo veiculo;
+
     public Long getCodigo() {
         return codigo;
     }
@@ -50,6 +53,14 @@ public class Proprietario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
     @Override

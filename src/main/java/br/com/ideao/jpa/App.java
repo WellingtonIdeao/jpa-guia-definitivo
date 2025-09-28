@@ -1,5 +1,6 @@
 package br.com.ideao.jpa;
 
+import br.com.ideao.jpa.dao.ProprietarioDAO;
 import br.com.ideao.jpa.dao.VeiculoDAO;
 import br.com.ideao.jpa.dominio.Proprietario;
 import br.com.ideao.jpa.dominio.TipoCombustivel;
@@ -15,6 +16,7 @@ import java.util.List;
 public class App {
 	public static void main(String[] args) {
         VeiculoDAO veiculoDAO = new VeiculoDAO();
+        ProprietarioDAO proprietarioDAO = new ProprietarioDAO();
 
         Veiculo veiculo = new Veiculo();
         VeiculoId id = new VeiculoId("ABC-1234", "João Pessoa");
@@ -55,7 +57,10 @@ public class App {
         veiculoDAO.persistenceContext();
         veiculoDAO.persistDetached();
         show(veiculoDAO.list());
+        System.out.println(proprietarioDAO.getVeiculo(1L));
+
         veiculoDAO.close();
+        proprietarioDAO.close();
         JpaUtil.close();
     }
 
