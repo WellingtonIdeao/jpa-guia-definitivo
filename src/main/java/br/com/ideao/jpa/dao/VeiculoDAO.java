@@ -1,5 +1,7 @@
 package br.com.ideao.jpa.dao;
 
+import br.com.ideao.jpa.dominio.Acessorio;
+import br.com.ideao.jpa.dominio.TipoCombustivel;
 import br.com.ideao.jpa.dominio.Veiculo;
 import br.com.ideao.jpa.dominio.VeiculoId;
 import br.com.ideao.jpa.util.JpaUtil;
@@ -8,6 +10,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public class VeiculoDAO {
@@ -100,6 +103,65 @@ public class VeiculoDAO {
         transaction.begin();
 
         veiculo = manager.merge(veiculo);
+
+        transaction.commit();
+    }
+
+    public void persistVeiculosAndAcessorios() {
+
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+
+        Acessorio roda = new Acessorio();
+        roda.setDescricao("Roda de liga leve");
+
+        Acessorio sensor = new Acessorio();
+        sensor.setDescricao("Sensores de estacionamento");
+
+        Acessorio mp3 = new Acessorio();
+        mp3.setDescricao("MP3 Player");
+
+        Acessorio pintura = new Acessorio();
+        pintura.setDescricao("Pintura metalizada");
+
+        manager.persist(roda);
+        manager.persist(sensor);
+        manager.persist(mp3);
+        manager.persist(pintura);
+
+        VeiculoId veiculoCod1 = new VeiculoId("DEF-1234", "Recife");
+
+        Veiculo veiculo1 = new Veiculo();
+        veiculo1.setCodigo(veiculoCod1);
+        veiculo1.setFabricante("VW");
+        veiculo1.setModelo("Gol");
+        veiculo1.setAnoFabricacao(2018);
+        veiculo1.setAnoModelo(2018);
+        veiculo1.setValor(new BigDecimal(17_200));
+        veiculo1.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+        veiculo1.setDataCadastro(LocalDate.now());
+
+        veiculo1.getAcessorios().add(roda);
+        veiculo1.getAcessorios().add(mp3);
+
+        VeiculoId veiculoCod2 = new VeiculoId("GHI-1234", "Maceió");
+
+        Veiculo veiculo2 = new Veiculo();
+        veiculo2.setCodigo(veiculoCod2);
+        veiculo2.setFabricante("Hyundai");
+        veiculo2.setModelo("i30");
+        veiculo2.setAnoFabricacao(2019);
+        veiculo2.setAnoModelo(2019);
+        veiculo2.setValor(new BigDecimal(53_500));
+        veiculo2.setTipoCombustivel(TipoCombustivel.BICOMBUSTIVEL);
+        veiculo2.setDataCadastro(LocalDate.now());
+
+        veiculo2.getAcessorios().add(roda);
+        veiculo1.getAcessorios().add(mp3);
+        veiculo1.getAcessorios().add(pintura);
+
+        manager.persist(veiculo1);
+        manager.persist(veiculo2);
 
         transaction.commit();
     }

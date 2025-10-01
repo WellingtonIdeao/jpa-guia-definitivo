@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tab_veiculo")
@@ -44,6 +46,15 @@ public class Veiculo {
     @ManyToOne
     @JoinColumn(name = "cod_proprietario")
     private Proprietario proprietario;
+
+    @ManyToMany
+    @JoinTable(name = "veiculo_acessorio",
+            joinColumns = {
+                    @JoinColumn(name = "veiculo_cidade", referencedColumnName = "cidade"),
+                    @JoinColumn(name = "veiculo_placa", referencedColumnName = "placa")
+            },
+            inverseJoinColumns = @JoinColumn(name = "acessorio_codigo"))
+    private Set<Acessorio> acessorios = new HashSet<>();
 
     public VeiculoId getCodigo() {
         return codigo;
@@ -140,6 +151,14 @@ public class Veiculo {
         }
         Veiculo veiculo = (Veiculo) o;
         return Objects.equals(codigo, veiculo.codigo);
+    }
+
+    public Set<Acessorio> getAcessorios() {
+        return acessorios;
+    }
+
+    public void setAcessorios(Set<Acessorio> acessorios) {
+        this.acessorios = acessorios;
     }
 
     @Override

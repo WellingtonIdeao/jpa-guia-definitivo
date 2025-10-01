@@ -59,6 +59,7 @@ public class App {
         show(veiculoDAO.list());
 
         show(proprietarioDAO.getVeiculos(1L));
+        veiculoDAO.persistVeiculosAndAcessorios();
 
         veiculoDAO.close();
         proprietarioDAO.close();
