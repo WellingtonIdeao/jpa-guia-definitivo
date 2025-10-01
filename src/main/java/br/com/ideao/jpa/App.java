@@ -2,16 +2,14 @@ package br.com.ideao.jpa;
 
 import br.com.ideao.jpa.dao.ProprietarioDAO;
 import br.com.ideao.jpa.dao.VeiculoDAO;
-import br.com.ideao.jpa.dominio.Proprietario;
-import br.com.ideao.jpa.dominio.TipoCombustivel;
-import br.com.ideao.jpa.dominio.Veiculo;
-import br.com.ideao.jpa.dominio.VeiculoId;
+import br.com.ideao.jpa.dominio.*;
 import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityNotFoundException;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 public class App {
 	public static void main(String[] args) {
@@ -59,8 +57,9 @@ public class App {
         show(veiculoDAO.list());
 
         show(proprietarioDAO.getVeiculos(1L));
-        veiculoDAO.persistVeiculosAndAcessorios();
+//        veiculoDAO.persistVeiculosAndAcessorios();
 
+        veiculoDAO.listAcessoriosByVeiculo(new VeiculoId("AAA", "1111"));
         veiculoDAO.close();
         proprietarioDAO.close();
         JpaUtil.close();

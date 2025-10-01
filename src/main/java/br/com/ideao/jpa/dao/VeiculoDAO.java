@@ -165,4 +165,14 @@ public class VeiculoDAO {
 
         transaction.commit();
     }
+
+    public void listAcessoriosByVeiculo(VeiculoId veiculoId) {
+        Veiculo veiculo = manager.find(Veiculo.class, veiculoId);
+
+        System.out.println("Veículo: " + veiculo.getModelo());
+        for (Acessorio acc: veiculo.getAcessorios()) {
+            System.out.println("Acessório: " + acc.getDescricao());
+        }
+
+    }
 }

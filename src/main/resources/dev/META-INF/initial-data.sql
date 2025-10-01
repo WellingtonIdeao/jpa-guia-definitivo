@@ -6,3 +6,13 @@ insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_
 insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel, data_cadastro, cod_proprietario) values ('BBB','2222', 'Ford', 'Fiesta', 2019, 2019, 42000, 'GASOLINA', sysdate(), 2);
 insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel, data_cadastro, cod_proprietario) values ('CCC', '3333', 'VW', 'Gol', 2019, 2020, 35000, 'BICOMBUSTIVEL', sysdate(), 3);
 insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel, data_cadastro, cod_proprietario) values ('DDD', '4444', 'Ford', 'Ka', 2018, 2019, 27000, 'BICOMBUSTIVEL', sysdate(), 1);
+
+insert into acessorio (codigo, descricao) values (1, 'Direção hidráulica');
+insert into acessorio (codigo, descricao) values (2, 'Alarme');
+insert into acessorio (codigo, descricao) values (3, 'Ar condicionado');
+insert into acessorio (codigo, descricao) values (4, "Bancos de couro");
+
+insert into veiculo_acessorio (veiculo_placa, veiculo_cidade, acessorio_codigo) values ('AAA', '1111', 1);
+insert into veiculo_acessorio (veiculo_placa, veiculo_cidade, acessorio_codigo) values ('AAA', '1111', 2);
+insert into veiculo_acessorio (veiculo_placa, veiculo_cidade, acessorio_codigo) values ('AAA', '1111', 3);
+insert into veiculo_acessorio (veiculo_placa, veiculo_cidade, acessorio_codigo) values ('AAA', '1111', 4);
