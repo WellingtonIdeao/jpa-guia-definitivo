@@ -2,7 +2,9 @@ package br.com.ideao.jpa.dominio;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "acessorio")
@@ -13,6 +15,9 @@ public class Acessorio {
 
     @Column(length = 60, nullable = false)
     private String descricao;
+
+    @ManyToMany(mappedBy = "acessorios")
+    private Set<Veiculo> veiculos = new HashSet<>();
 
     public Long getCodigo() {
         return codigo;
@@ -28,6 +33,14 @@ public class Acessorio {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Set<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(Set<Veiculo> veiculos) {
+        this.veiculos = veiculos;
     }
 
     @Override
