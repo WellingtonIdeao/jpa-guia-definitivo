@@ -28,7 +28,6 @@ public class App {
 
         Proprietario proprietario = new Proprietario();
         proprietario.setNome("João das Couves");
-        proprietario.setTelefone("(99) 1234-5678");
 
         veiculo.setCodigo(id);
         veiculo.setFabricante("Honda");
@@ -60,6 +59,15 @@ public class App {
 //        veiculoDAO.persistVeiculosAndAcessorios();
 
         veiculoDAO.listAcessoriosByVeiculo(new VeiculoId("AAA", "1111"));
+
+        Proprietario prop2 = new Proprietario();
+        prop2.setNome("Sebastião");
+        prop2.getTelefones().add("(99) 1234-5678");
+        prop2.getTelefones().add("(11) 9876-5432");
+
+        proprietarioDAO.persist(prop2);
+        proprietarioDAO.listTelefones(prop2.getCodigo());
+
         veiculoDAO.close();
         proprietarioDAO.close();
         JpaUtil.close();

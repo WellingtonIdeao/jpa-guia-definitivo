@@ -2,6 +2,7 @@ package br.com.ideao.jpa.dominio;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,14 +16,16 @@ public class Proprietario {
     @Column(length = 60, nullable = false)
     private String nome;
 
-    @Column(length = 20, nullable = false)
-    private String telefone;
-
     @Column(length = 255)
     private String email;
 
     @OneToMany(mappedBy = "proprietario")
     private List<Veiculo> veiculos;
+
+    @ElementCollection
+    @CollectionTable(name = "proprietario_telefone", joinColumns = @JoinColumn(name = "proprietario_codigo"))
+    @Column(name = "telefone_numero", length = 20, nullable = false)
+    private List<String> telefones = new ArrayList<>();
 
     public Long getCodigo() {
         return codigo;
@@ -40,14 +43,6 @@ public class Proprietario {
         this.nome = nome;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -62,6 +57,14 @@ public class Proprietario {
 
     public void setVeiculos(List<Veiculo> veiculos) {
         this.veiculos = veiculos;
+    }
+
+    public List<String> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<String> telefones) {
+        this.telefones = telefones;
     }
 
     @Override
