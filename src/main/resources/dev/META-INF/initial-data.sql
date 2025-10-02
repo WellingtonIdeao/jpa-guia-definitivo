@@ -2,9 +2,9 @@ insert into tab_proprietario (codigo, nome) values (1, 'Fernando Martins');
 insert into tab_proprietario (codigo, nome) values (2, 'Isabela Santos');
 insert into tab_proprietario (codigo, nome) values (3, 'Ulisses Silva');
 
-insert into proprietario_telefone (codigo, telefone) values (1, '99 9 1111 1111');
-insert into proprietario_telefone (codigo, telefone) values (2, '99 9 2222 2222');
-insert into proprietario_telefone (codigo, telefone) values (3, '99 9 3333 3333');
+insert into proprietario_telefone (proprietario_codigo, telefone_numero) values (1, '99 9 1111 1111');
+insert into proprietario_telefone (proprietario_codigo, telefone_numero) values (2, '99 9 2222 2222');
+insert into proprietario_telefone (proprietario_codigo, telefone_numero) values (3, '99 9 3333 3333');
 
 insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel, data_cadastro, cod_proprietario) values ('AAA','1111', 'Fiat', 'Toro', 2020, 2020, 107000, 'DIESEL', sysdate(), 1);
 insert into tab_veiculo (placa, cidade, fabricante, modelo, ano_fabricacao, ano_modelo, valor, tipo_combustivel, data_cadastro, cod_proprietario) values ('BBB','2222', 'Ford', 'Fiesta', 2019, 2019, 42000, 'GASOLINA', sysdate(), 2);
