@@ -1,5 +1,7 @@
 package br.com.ideao.jpa;
 
+import br.com.ideao.jpa.dao.ClienteDAO;
+import br.com.ideao.jpa.dao.FuncionarioDAO;
 import br.com.ideao.jpa.dao.ProprietarioDAO;
 import br.com.ideao.jpa.dao.VeiculoDAO;
 import br.com.ideao.jpa.dominio.*;
@@ -15,6 +17,8 @@ public class App {
 	public static void main(String[] args) {
         VeiculoDAO veiculoDAO = new VeiculoDAO();
         ProprietarioDAO proprietarioDAO = new ProprietarioDAO();
+        ClienteDAO clienteDAO = new ClienteDAO();
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
         Veiculo veiculo = new Veiculo();
         VeiculoId id = new VeiculoId("ABC-1234", "João Pessoa");
@@ -68,8 +72,16 @@ public class App {
         proprietarioDAO.persist(prop2);
         proprietarioDAO.listTelefones(prop2.getCodigo());
 
+        clienteDAO.persist(new Cliente());
+        funcionarioDAO.persist(new Funcionario());
+        clienteDAO.list();
+        funcionarioDAO.list();
+        funcionarioDAO.listPessoas();
+
         veiculoDAO.close();
         proprietarioDAO.close();
+        clienteDAO.close();
+        funcionarioDAO.close();
         JpaUtil.close();
     }
 

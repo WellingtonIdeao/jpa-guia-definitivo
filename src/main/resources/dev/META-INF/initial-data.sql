@@ -21,3 +21,7 @@ insert into veiculo_acessorio (veiculo_placa, veiculo_cidade, acessorio_codigo) 
 insert into veiculo_acessorio (veiculo_placa, veiculo_cidade, acessorio_codigo) values ('AAA', '1111', 3);
 insert into veiculo_acessorio (veiculo_placa, veiculo_cidade, acessorio_codigo) values ('AAA', '1111', 4);
 
+insert into pessoa (nome, bloqueado, limite_credito, renda_mensal, tipo) values ('Mariana Aguilar', false, 10000, 5000, 'C');
+insert into pessoa (nome, bloqueado, limite_credito, renda_mensal, tipo) values ('Douglas Montes', false, 8000, 4500, 'C');
+
+insert into pessoa (nome, cargo, salario, tipo) values ('Maria das Dores', 'Gerente', 8000, 'F');
