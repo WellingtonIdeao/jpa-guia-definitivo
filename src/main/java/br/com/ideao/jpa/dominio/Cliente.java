@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "cliente")
-@PrimaryKeyJoinColumn(name = "pessoa_codigo")
 public class Cliente extends Pessoa {
 
     @Column(name = "limite_credito", nullable = true)
