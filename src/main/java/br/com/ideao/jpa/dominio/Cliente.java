@@ -1,13 +1,12 @@
 package br.com.ideao.jpa.dominio;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity
-@DiscriminatorValue("C")
+@Table(name = "cliente")
+@PrimaryKeyJoinColumn(name = "pessoa_codigo")
 public class Cliente extends Pessoa {
 
     @Column(name = "limite_credito", nullable = true)

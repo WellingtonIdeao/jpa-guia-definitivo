@@ -6,8 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "pessoa")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

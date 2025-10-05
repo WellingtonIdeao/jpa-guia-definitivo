@@ -1,14 +1,16 @@
 package br.com.ideao.jpa.dominio;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
 
 @Entity
-@DiscriminatorValue("F")
-public class Funcionario extends Pessoa{
+@Table(name = "funcionario")
+@PrimaryKeyJoinColumn(name = "pessoa_codigo")
+public class Funcionario extends Pessoa {
 
     @Column(nullable = true)
     private BigDecimal salario;
