@@ -1,9 +1,6 @@
 package br.com.ideao.jpa;
 
-import br.com.ideao.jpa.dao.ClienteDAO;
-import br.com.ideao.jpa.dao.FuncionarioDAO;
-import br.com.ideao.jpa.dao.ProprietarioDAO;
-import br.com.ideao.jpa.dao.VeiculoDAO;
+import br.com.ideao.jpa.dao.*;
 import br.com.ideao.jpa.dominio.*;
 import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityNotFoundException;
@@ -19,6 +16,7 @@ public class App {
         ProprietarioDAO proprietarioDAO = new ProprietarioDAO();
         ClienteDAO clienteDAO = new ClienteDAO();
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
 
         Veiculo veiculo = new Veiculo();
         VeiculoId id = new VeiculoId("ABC-1234", "João Pessoa");
@@ -78,10 +76,13 @@ public class App {
         funcionarioDAO.list();
         funcionarioDAO.listPessoas();
 
+        produtoDAO.list();
+
         veiculoDAO.close();
         proprietarioDAO.close();
         clienteDAO.close();
         funcionarioDAO.close();
+        produtoDAO.close();
         JpaUtil.close();
     }
 

@@ -25,3 +25,10 @@ insert into cliente (codigo, nome, bloqueado, limite_credito, renda_mensal) valu
 insert into cliente (codigo, nome, bloqueado, limite_credito, renda_mensal) values (2, 'Douglas Montes', false, 8000, 4500);
 
 insert into funcionario (codigo, nome, cargo, salario) values (3,'Maria das Dores', 'Gerente', 8000);
+
+
+insert into categoria (codigo, nome) values (1, 'Bebidas');
+
+insert into produto (codigo, categoria_codigo, nome) values (1, 1, 'Água');
+insert into produto (codigo, categoria_codigo, nome) values (2, 1, 'Refrigerante');
+insert into produto (codigo, categoria_codigo, nome) values (3, 1, 'Cerveja');
