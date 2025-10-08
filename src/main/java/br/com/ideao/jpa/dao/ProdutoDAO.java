@@ -1,5 +1,6 @@
 package br.com.ideao.jpa.dao;
 
+import br.com.ideao.jpa.dominio.Categoria;
 import br.com.ideao.jpa.dominio.Produto;
 import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityManager;
@@ -18,9 +19,24 @@ public class ProdutoDAO {
 
     public void list() {
         EntityTransaction transaction = manager.getTransaction();
-        transaction.begin();
         Produto produto = manager.find(Produto.class, 3L);
         System.out.println("Nome: " + produto.getNome());
         System.out.println("Categoria: " + produto.getCategoria().getNome());
+    }
+
+    public void persist() {
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+
+        Categoria categoria = new Categoria();
+        categoria.setNome("Roupas");
+
+        Produto produto = new Produto();
+        produto.setNome("Camisa Social");
+        produto.setCategoria(categoria);
+
+        manager.persist(produto);
+
+        transaction.commit();
     }
 }

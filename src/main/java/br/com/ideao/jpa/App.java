@@ -77,8 +77,10 @@ public class App {
         funcionarioDAO.list();
         funcionarioDAO.listPessoas();
         produtoDAO.list();
-
         categoriaDAO.list();
+        produtoDAO.persist();
+
+        categoriaDAO.addCategoriAndProdutos();
 
         veiculoDAO.close();
         proprietarioDAO.close();

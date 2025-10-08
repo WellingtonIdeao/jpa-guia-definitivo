@@ -15,7 +15,7 @@ public class Produto {
     @Column(length = 60, nullable = false)
     private String nome;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Categoria categoria;
 
     public Long getCodigo() {
