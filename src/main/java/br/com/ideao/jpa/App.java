@@ -79,8 +79,9 @@ public class App {
         produtoDAO.list();
         categoriaDAO.list();
         produtoDAO.persist();
-
         categoriaDAO.addCategoriAndProdutos();
+
+        categoriaDAO.remove();
 
         veiculoDAO.close();
         proprietarioDAO.close();

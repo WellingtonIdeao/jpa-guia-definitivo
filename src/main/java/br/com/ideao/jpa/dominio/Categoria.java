@@ -16,7 +16,7 @@ public class Categoria {
     @Column(length = 60, nullable = false)
     private String nome;
 
-    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Produto> produtos;
 
     public Long getCodigo() {

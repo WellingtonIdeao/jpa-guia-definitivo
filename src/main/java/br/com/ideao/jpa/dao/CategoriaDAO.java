@@ -45,4 +45,14 @@ public class CategoriaDAO {
 
         transaction.commit();
     }
+
+    public void remove() {
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+        Categoria categoria = manager.find(Categoria.class, 1L);
+
+        manager.remove(categoria);
+
+        transaction.commit();
+    }
 }
