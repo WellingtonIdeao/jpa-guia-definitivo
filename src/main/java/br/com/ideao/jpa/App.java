@@ -17,6 +17,7 @@ public class App {
         ClienteDAO clienteDAO = new ClienteDAO();
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         ProdutoDAO produtoDAO = new ProdutoDAO();
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
 
         Veiculo veiculo = new Veiculo();
         VeiculoId id = new VeiculoId("ABC-1234", "João Pessoa");
@@ -75,14 +76,16 @@ public class App {
         clienteDAO.list();
         funcionarioDAO.list();
         funcionarioDAO.listPessoas();
-
         produtoDAO.list();
+
+        categoriaDAO.list();
 
         veiculoDAO.close();
         proprietarioDAO.close();
         clienteDAO.close();
         funcionarioDAO.close();
         produtoDAO.close();
+        categoriaDAO.close();
         JpaUtil.close();
     }
 

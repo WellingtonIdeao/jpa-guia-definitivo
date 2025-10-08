@@ -2,7 +2,6 @@ package br.com.ideao.jpa.dominio;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,7 +16,7 @@ public class Categoria {
     @Column(length = 60, nullable = false)
     private String nome;
 
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER)
     private List<Produto> produtos;
 
     public Long getCodigo() {
