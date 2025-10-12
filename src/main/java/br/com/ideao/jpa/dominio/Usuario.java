@@ -12,10 +12,14 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
+    @Version
+    private Long versao;
+
     @Column(length = 255, nullable = false)
     private String email;
 
     private boolean ativo;
+
 
     public Long getCodigo() {
         return codigo;

@@ -1,5 +1,6 @@
 package br.com.ideao.jpa.dao;
 
+import br.com.ideao.jpa.dominio.Usuario;
 import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -39,5 +40,27 @@ public class UsuarioDAO {
         System.out.println(linhasExcluidas + " registros removidos.");
 
         transaction.commit();
+    }
+
+    public void testConcurrency() {
+        EntityManager manager1 = JpaUtil.getEntityManager();
+        EntityTransaction tx1 = manager1.getTransaction();
+        tx1.begin();
+
+        EntityManager manager2 = JpaUtil.getEntityManager();
+        EntityTransaction tx2 = manager2.getTransaction();
+        tx2.begin();
+
+        Usuario u1 = manager1.find(Usuario.class, 1L);
+        u1.setEmail("maria@mail.com");
+
+        Usuario u2 = manager2.find(Usuario.class, 1L);
+        u2.setEmail("jose@mail.com");
+
+        tx1.commit();
+        manager1.close();
+
+        tx2.commit();
+        manager2.close();
     }
 }

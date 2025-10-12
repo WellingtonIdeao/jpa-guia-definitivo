@@ -82,9 +82,10 @@ public class App {
         produtoDAO.persist();
         categoriaDAO.addCategoriAndProdutos();
         categoriaDAO.remove();
-
         usuarioDAO.batchUpdate();
         usuarioDAO.batchDelete();
+
+        usuarioDAO.testConcurrency();
 
         veiculoDAO.close();
         proprietarioDAO.close();

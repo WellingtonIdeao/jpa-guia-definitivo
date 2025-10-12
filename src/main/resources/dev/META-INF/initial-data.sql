@@ -33,7 +33,7 @@ insert into produto (codigo, categoria_codigo, nome) values (1, 1, 'Água');
 insert into produto (codigo, categoria_codigo, nome) values (2, 1, 'Refrigerante');
 insert into produto (codigo, categoria_codigo, nome) values (3, 1, 'Cerveja');
 
-insert into usuario (codigo, email, ativo) values (1, 'joao@algaworks.com', true);
-insert into usuario (codigo, email, ativo) values (2, 'manoel@algaworks.com', true);
-insert into usuario (codigo, email, ativo) values (3, 'sebastiao@gmail.com', true);
-insert into usuario (codigo, email, ativo) values (4, 'marquim321@gmail.com', false);
+insert into usuario (codigo, email, ativo, versao) values (1, 'joao@mail.com', true, 0);
+insert into usuario (codigo, email, ativo, versao) values (2, 'manoel@mail.com', true, 0);
+insert into usuario (codigo, email, ativo, versao) values (3, 'sebastiao@gmail.com', true, 0);
+insert into usuario (codigo, email, ativo, versao) values (4, 'marquim321@gmail.com', false, 0);
