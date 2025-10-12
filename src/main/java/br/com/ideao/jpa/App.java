@@ -18,6 +18,7 @@ public class App {
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         ProdutoDAO produtoDAO = new ProdutoDAO();
         CategoriaDAO categoriaDAO = new CategoriaDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
 
         Veiculo veiculo = new Veiculo();
         VeiculoId id = new VeiculoId("ABC-1234", "João Pessoa");
@@ -80,8 +81,10 @@ public class App {
         categoriaDAO.list();
         produtoDAO.persist();
         categoriaDAO.addCategoriAndProdutos();
-
         categoriaDAO.remove();
+
+        usuarioDAO.batchUpdate();
+        usuarioDAO.batchDelete();
 
         veiculoDAO.close();
         proprietarioDAO.close();
@@ -89,6 +92,7 @@ public class App {
         funcionarioDAO.close();
         produtoDAO.close();
         categoriaDAO.close();
+        usuarioDAO.close();
         JpaUtil.close();
     }
 
