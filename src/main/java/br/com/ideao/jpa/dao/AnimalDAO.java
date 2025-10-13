@@ -6,7 +6,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class AnimalDAO {
     private EntityManager manager;
@@ -26,7 +25,6 @@ public class AnimalDAO {
         Animal animal = new Animal();
         animal.setNome("Mimosa");
         animal.setDataNascimento(LocalDate.now().minusYears(5));
-        animal.setDataUltimaAtualizacao(LocalDateTime.now());
 
         System.out.println("Idade antes de persistir: " + animal.getIdade());
         manager.persist(animal);

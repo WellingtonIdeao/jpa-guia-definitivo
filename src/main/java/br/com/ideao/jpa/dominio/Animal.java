@@ -1,5 +1,6 @@
 package br.com.ideao.jpa.dominio;
 
+import br.com.ideao.jpa.listeners.AuditorAnimal;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "animal")
+@EntityListeners(AuditorAnimal.class)
 public class Animal {
 
     @Id
