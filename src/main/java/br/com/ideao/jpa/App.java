@@ -8,7 +8,6 @@ import jakarta.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class App {
 	public static void main(String[] args) {
@@ -19,6 +18,7 @@ public class App {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         CategoriaDAO categoriaDAO = new CategoriaDAO();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
+        AnimalDAO animalDAO = new AnimalDAO();
 
         Veiculo veiculo = new Veiculo();
         VeiculoId id = new VeiculoId("ABC-1234", "João Pessoa");
@@ -84,9 +84,10 @@ public class App {
         categoriaDAO.remove();
         usuarioDAO.batchUpdate();
         usuarioDAO.batchDelete();
-
 //        usuarioDAO.testConcurrency();
         usuarioDAO.testConcurrencyPessimistic();
+
+        animalDAO.persist();
 
         veiculoDAO.close();
         proprietarioDAO.close();
@@ -95,6 +96,7 @@ public class App {
         produtoDAO.close();
         categoriaDAO.close();
         usuarioDAO.close();
+        animalDAO.close();
         JpaUtil.close();
     }
 
