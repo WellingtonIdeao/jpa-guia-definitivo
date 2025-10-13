@@ -85,7 +85,8 @@ public class App {
         usuarioDAO.batchUpdate();
         usuarioDAO.batchDelete();
 
-        usuarioDAO.testConcurrency();
+//        usuarioDAO.testConcurrency();
+        usuarioDAO.testConcurrencyPessimistic();
 
         veiculoDAO.close();
         proprietarioDAO.close();

@@ -4,6 +4,7 @@ import br.com.ideao.jpa.dominio.Usuario;
 import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.LockModeType;
 import jakarta.persistence.Query;
 
 public class UsuarioDAO {
@@ -62,5 +63,15 @@ public class UsuarioDAO {
 
         tx2.commit();
         manager2.close();
+    }
+
+    public void testConcurrencyPessimistic() {
+        EntityTransaction transaction = manager.getTransaction();
+        transaction.begin();
+
+        Usuario usuario = manager.find(Usuario.class, 1L, LockModeType.PESSIMISTIC_WRITE);
+        usuario.setEmail("new@mail.com");
+
+        transaction.commit();
     }
 }
