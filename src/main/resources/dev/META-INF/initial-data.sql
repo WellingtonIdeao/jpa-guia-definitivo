@@ -37,3 +37,7 @@ insert into usuario (codigo, email, ativo, versao) values (1, 'joao@mail.com', t
 insert into usuario (codigo, email, ativo, versao) values (2, 'manoel@mail.com', true, 0);
 insert into usuario (codigo, email, ativo, versao) values (3, 'sebastiao@gmail.com', true, 0);
 insert into usuario (codigo, email, ativo, versao) values (4, 'marquim321@gmail.com', false, 0);
+
+insert into centro_custo(codigo, nome) values (1, 'Tecnologia');
+insert into centro_custo(codigo, nome) values (2, 'Comercial');
+

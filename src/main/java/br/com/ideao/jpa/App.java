@@ -19,6 +19,7 @@ public class App {
         CategoriaDAO categoriaDAO = new CategoriaDAO();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         AnimalDAO animalDAO = new AnimalDAO();
+        CentroCustoDAO centroDAO = new CentroCustoDAO();
 
         Veiculo veiculo = new Veiculo();
         VeiculoId id = new VeiculoId("ABC-1234", "João Pessoa");
@@ -86,8 +87,9 @@ public class App {
         usuarioDAO.batchDelete();
 //        usuarioDAO.testConcurrency();
         usuarioDAO.testConcurrencyPessimistic();
-
         animalDAO.persist();
+
+        centroDAO.querySecondLevelCache();
 
         veiculoDAO.close();
         proprietarioDAO.close();
