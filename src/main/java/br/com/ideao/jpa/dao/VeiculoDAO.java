@@ -4,6 +4,7 @@ import br.com.ideao.jpa.dominio.Acessorio;
 import br.com.ideao.jpa.dominio.TipoCombustivel;
 import br.com.ideao.jpa.dominio.Veiculo;
 import br.com.ideao.jpa.dominio.VeiculoId;
+import br.com.ideao.jpa.dto.PrecoVeiculo;
 import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -225,6 +226,15 @@ public class VeiculoDAO {
             String modelo = (String) valores[0];
             BigDecimal valor = (BigDecimal) valores[1];
             System.out.println(modelo + " - " + valor);
+        }
+    }
+
+    public void queryComplexProjectionsWithNew() {
+        TypedQuery<PrecoVeiculo> query = manager.createQuery(
+                "select new br.com.ideao.jpa.dto.PrecoVeiculo(modelo, valor) from Veiculo", PrecoVeiculo.class);
+        List<PrecoVeiculo> precos = query.getResultList();
+        for (PrecoVeiculo preco : precos) {
+            System.out.println(preco.getModelo() + " - " + preco.getValor());
         }
     }
 }
