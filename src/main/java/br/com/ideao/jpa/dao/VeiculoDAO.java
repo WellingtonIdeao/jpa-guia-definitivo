@@ -8,6 +8,7 @@ import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -174,5 +175,38 @@ public class VeiculoDAO {
             System.out.println("Acessório: " + acc.getDescricao());
         }
 
+    }
+
+    public void dynamicQuery() {
+        Query query = manager.createQuery("select v from Veiculo v where anoFabricacao = 2019");
+        List veiculos = query.getResultList();
+
+        for (Object obj : veiculos) {
+            Veiculo veiculo = (Veiculo) obj;
+            System.out.println(veiculo.getModelo() + " " + veiculo.getFabricante() + ": " + veiculo.getAnoFabricacao());
+        }
+    }
+
+    public void dynamicQueryWithNamedParameters() {
+        Query query = manager.createQuery("select v from Veiculo v where anoFabricacao >= :ano "
+                + "and valor <= :preco");
+        query.setParameter("ano", 2020);
+        query.setParameter("preco", new BigDecimal(107_000));
+        List veiculos = query.getResultList();
+
+        for (Object obj : veiculos) {
+            Veiculo veiculo = (Veiculo) obj;
+            System.out.println(veiculo.getModelo() + " " + veiculo.getFabricante() + ": " + veiculo.getAnoFabricacao());
+        }
+
+    }
+
+    public void dynamicTypedQuery() {
+        TypedQuery<Veiculo> query = manager.createQuery("select v from Veiculo v", Veiculo.class);
+        List<Veiculo> veiculos = query.getResultList();
+
+        for (Veiculo veiculo : veiculos) {
+            System.out.println(veiculo.getModelo() + " " + veiculo.getFabricante() + ": " + veiculo.getAnoFabricacao());
+        }
     }
 }

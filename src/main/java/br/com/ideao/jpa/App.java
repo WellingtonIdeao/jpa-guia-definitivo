@@ -88,8 +88,11 @@ public class App {
 //        usuarioDAO.testConcurrency();
         usuarioDAO.testConcurrencyPessimistic();
         animalDAO.persist();
-
         centroDAO.querySecondLevelCache();
+
+        veiculoDAO.dynamicQuery();
+        veiculoDAO.dynamicQueryWithNamedParameters();
+        veiculoDAO.dynamicTypedQuery();
 
         veiculoDAO.close();
         proprietarioDAO.close();
