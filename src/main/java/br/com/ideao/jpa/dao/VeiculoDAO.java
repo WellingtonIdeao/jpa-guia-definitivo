@@ -209,4 +209,12 @@ public class VeiculoDAO {
             System.out.println(veiculo.getModelo() + " " + veiculo.getFabricante() + ": " + veiculo.getAnoFabricacao());
         }
     }
+
+    public void queryProjections() {
+        TypedQuery<String> query = manager.createQuery("select modelo from Veiculo", String.class);
+        List<String> modelos = query.getResultList();
+        for (String modelo : modelos) {
+            System.out.println(modelo);
+        }
+    }
 }

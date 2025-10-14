@@ -93,6 +93,7 @@ public class App {
         veiculoDAO.dynamicQuery();
         veiculoDAO.dynamicQueryWithNamedParameters();
         veiculoDAO.dynamicTypedQuery();
+        veiculoDAO.queryProjections();
 
         veiculoDAO.close();
         proprietarioDAO.close();
