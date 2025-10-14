@@ -217,4 +217,14 @@ public class VeiculoDAO {
             System.out.println(modelo);
         }
     }
+
+    public void queryComplexProjections() {
+        TypedQuery<Object[]> query = manager.createQuery("select modelo, valor from Veiculo", Object[].class);
+        List<Object[]> result = query.getResultList();
+        for (Object[] valores : result) {
+            String modelo = (String) valores[0];
+            BigDecimal valor = (BigDecimal) valores[1];
+            System.out.println(modelo + " - " + valor);
+        }
+    }
 }

@@ -95,6 +95,8 @@ public class App {
         veiculoDAO.dynamicTypedQuery();
         veiculoDAO.queryProjections();
 
+        veiculoDAO.queryComplexProjections();
+
         veiculoDAO.close();
         proprietarioDAO.close();
         clienteDAO.close();
