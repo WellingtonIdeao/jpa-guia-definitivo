@@ -5,6 +5,7 @@ import br.com.ideao.jpa.dominio.TipoCombustivel;
 import br.com.ideao.jpa.dominio.Veiculo;
 import br.com.ideao.jpa.dominio.VeiculoId;
 import br.com.ideao.jpa.dto.PrecoVeiculo;
+import br.com.ideao.jpa.dto.TotalCarroPorAno;
 import br.com.ideao.jpa.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -237,4 +238,27 @@ public class VeiculoDAO {
             System.out.println(preco.getModelo() + " - " + preco.getValor());
         }
     }
+
+    public void queryAggregateFunctions() {
+        TypedQuery<TotalCarroPorAno> query = manager.createQuery(
+                "select new br.com.ideao.jpa.dto.TotalCarroPorAno("
+                        + "v.anoFabricacao, avg(v.valor), count(v)) "
+                        + "from Veiculo v group by v.anoFabricacao",
+                TotalCarroPorAno.class);
+
+        List<TotalCarroPorAno> result = query.getResultList();
+
+        for (TotalCarroPorAno valores : result) {
+            System.out.println("Ano: " + valores.getAnoFabricacao()
+                    + " - Preço médio: " + valores.getMediaPreco()
+                    + " - Quantidade: " + valores.getQtdCarros());
+        }
+    }
+
+    public void querySingleResult() {
+        TypedQuery<Long> query  = manager.createQuery("select count(v) from Veiculo v", Long.class);
+            Long qtdVeiculos = query.getSingleResult();
+            System.out.println("Quantidade de veículos: " + qtdVeiculos);
+    }
+    
 }
