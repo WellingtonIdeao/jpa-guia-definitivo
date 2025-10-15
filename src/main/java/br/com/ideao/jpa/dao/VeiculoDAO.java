@@ -260,5 +260,15 @@ public class VeiculoDAO {
             Long qtdVeiculos = query.getSingleResult();
             System.out.println("Quantidade de veículos: " + qtdVeiculos);
     }
+
+    public void nativeQuery() {
+        Query query = manager.createNativeQuery("select * from tab_veiculo", Veiculo.class);
+        List<Veiculo> veiculos = query.getResultList();
+
+        for (Veiculo veiculo: veiculos) {
+            System.out.println(veiculo.getModelo() + " - "
+                    + veiculo.getProprietario().getNome());
+        }
+    }
     
 }

@@ -96,9 +96,10 @@ public class App {
         veiculoDAO.queryProjections();
         veiculoDAO.queryComplexProjections();
         veiculoDAO.queryComplexProjectionsWithNew();
-
         veiculoDAO.queryAggregateFunctions();
         veiculoDAO.querySingleResult();
+
+        veiculoDAO.nativeQuery();
 
         veiculoDAO.close();
         proprietarioDAO.close();
